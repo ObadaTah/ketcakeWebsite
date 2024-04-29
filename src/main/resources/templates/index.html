@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<div th:replace="demo_1/header :: head"> </div>
+
+<body>
+    <div class="main-wrapper">
+
+        <div th:replace="demo_1/side-bar :: nav"> </div>
+        <div class="page-wrapper">
+
+            <div th:replace="demo_1/nav :: nav"> </div>
+            <div class="page-content">
+
+            </div>
+            <div th:replace="demo_1/footer :: footer">&copy; 2016 The Static Templates</div>
+        </div>
+    </div>
+</body>
+
+</html>
