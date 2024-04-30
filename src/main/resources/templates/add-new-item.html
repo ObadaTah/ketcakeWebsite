@@ -16,46 +16,47 @@
                 <div class="card">
                     <div class="card-body">
                         <h6 class="card-title">Add New Item</h6>
-                        <form class="forms-sample">
+                        <form class="forms-sample" th:action="@{add-item}" th:object="${item}" method="post">
                             <div class="form-group">
                                 <label for="end_point_identifier">End Point Identifier</label>
-                                <input type="text" class="form-control" id="end_point_identifier" autocomplete="off"
-                                    placeholder="dark-mousse">
+                                <input th:field="*{endPointIdentifier}" type="text" class="form-control"
+                                    id="end_point_identifier" autocomplete="off" placeholder="dark-mousse">
                             </div>
                             <div class="form-group">
                                 <label for="item_name">Item Name</label>
-                                <input type="text" class="form-control" id="item_name" autocomplete="off"
-                                    placeholder="دارك مووس">
+                                <input th:field="*{itemName}" type="text" class="form-control" id="item_name"
+                                    autocomplete="off" placeholder="دارك مووس">
                             </div>
                             <div class="form-group">
                                 <label for="item_description">Item Description</label>
-                                <input type="textarea" class="form-control" id="item_description"
+                                <input th:field="*{itemDescription}" type="textarea" class="form-control"
+                                    id="item_description"
                                     placeholder="كيكة الدارك كرمل موس , مكون من طبقة من كعكة الشوكولاتة الالمانية , و طبقة كريمية من خليط موس الشوكولاطةالبلجيكية و حشوة الكرمل الخفيفة  , و طبقة من جيلي الكرمل اللذيذ من الاعلى ">
                             </div>
                             <div class="form-group">
                                 <label for="item_price">Item Price</label>
-                                <input type="number" class="form-control" id="item_price" autocomplete="off"
-                                    placeholder="20">
+                                <input th:field="*{itemPrice}" type="number" class="form-control" id="item_price"
+                                    autocomplete="off" placeholder="20">
                             </div>
                             <div class="form-group">
                                 <label for="item_type">Item Type</label>
-                                <input type="text" class="form-control" id="item_type" autocomplete="off"
-                                    placeholder="pcs">
+                                <input th:field="*{itemType}" type="text" class="form-control" id="item_type"
+                                    autocomplete="off" placeholder="pcs">
                             </div>
                             <div class="form-group">
                                 <label for="item_flavour">Item Flavour</label>
-                                <input type="text" class="form-control" id="item_flavour" autocomplete="off"
-                                    placeholder="chocolate">
+                                <input th:field="*{itemFlavour}" type="text" class="form-control" id="item_flavour"
+                                    autocomplete="off" placeholder="chocolate">
                             </div>
                             <div class="form-group">
                                 <label for="item_size">Item Size</label>
-                                <input type="text" class="form-control" id="item_size" autocomplete="off"
-                                    placeholder="1">
+                                <input th:field="*{itemSize}" type="number" class="form-control" id="item_size"
+                                    autocomplete="off" placeholder="1">
                             </div>
                             <div class="form-group">
                                 <label for="item_shape">Item Shape</label>
-                                <input type="text" class="form-control" id="item_shape" autocomplete="off"
-                                    placeholder="triangle">
+                                <input th:field="*{itemShape}" type="text" class="form-control" id="item_shape"
+                                    autocomplete="off" placeholder="triangle">
                             </div>
 
 

@@ -11,7 +11,54 @@
 
             <div th:replace="demo_1/nav :: nav"> </div>
             <div class="page-content">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Items</h4>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Item Photo
+                                        </th>
+                                        <th>
+                                            Item Id
+                                        </th>
+                                        <th>
+                                            Item Name
+                                        </th>
+                                        <th>
+                                            Item Price
+                                        </th>
+                                        <th>
+                                            Item Type
+                                        </th>
+                                        <th>
+                                            End Point Identifier
+                                        </th>
+                                        <th>
+                                            Operations
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="item : ${items}">
+                                        <td class="py-1">
+                                            <img src="http://via.placeholder.com/36x36" alt="image">
+                                        </td>
+                                        <td th:text="${item.id}">1</td>
+                                        <td><a href="#" th:text="${item.name}">Name ...</a></td>
+                                        <td th:text="${item.price}">Price ...</td>
+                                        <td th:text="${item.type}">Type ...</td>
+                                        <td th:text="${item.endPointIdentifier}">endPointIdentifier ...</td>
+                                    </tr>
 
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div th:replace="demo_1/footer :: footer">&copy; 2016 The Static Templates</div>
         </div>

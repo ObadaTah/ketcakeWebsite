@@ -1,11 +1,13 @@
 package ps.ketcake.website;
 
-import lombok.RequiredArgsConstructor;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
@@ -14,24 +16,22 @@ public class QrController {
 
     private final ItemRepository itemRepository;
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public String one(Model model) {
-        model.addAttribute("item", itemRepository.findAll());
+        model.addAttribute("items", itemRepository.findAll());
         return "index";
     }
 
-    @PostMapping("/save-item")
-    public String saveItem(ItemModel item, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "add-new-item";
-        }
-
+    @PostMapping("/add-item")
+    public String save_item(@ModelAttribute ItemModel item, Model model) {
+        model.addAttribute("item", item);
         itemRepository.save(item);
-        return "redirect:/index";
+        return "index";
     }
 
     @GetMapping("/add-item")
-    public String addItem() {
+    public String addItem(Model model) {
+        model.addAttribute("item", new ItemModel());
         return "add-new-item";
     }
 }

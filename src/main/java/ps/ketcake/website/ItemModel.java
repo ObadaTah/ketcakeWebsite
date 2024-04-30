@@ -1,6 +1,8 @@
 package ps.ketcake.website;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,6 +14,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ItemModel {
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private @Id Long id;
     String fileLocation;
     String endPointIdentifier;
