@@ -11,46 +11,60 @@
 
             <div th:replace="demo_1/nav :: nav"> </div>
             <div class="page-content">
+                <a th:href="@{admin/add-item}">
+                    <button class="btn btn-info">Add New Item</button>
+
+                </a>
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Items</h4>
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="width: 100%;">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
                                         <th>
                                             Item Photo
                                         </th>
-                                        <th>
-                                            Item Id
-                                        </th>
+
                                         <th>
                                             Item Name
                                         </th>
-                                        <th>
-                                            Item Price
-                                        </th>
+
                                         <th>
                                             Item Type
                                         </th>
-                                        <th>
-                                            End Point Identifier
-                                        </th>
-                                        <th>
+
+                                        <th style="color: red; width:70%">
                                             Operations
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr th:each="item : ${items}">
+
                                         <td class="py-1">
-                                            <img src="http://via.placeholder.com/36x36" alt="image">
+                                            <img width="100px" src="http://via.placeholder.com/100x100" alt="image">
                                         </td>
-                                        <td th:text="${item.id}">1</td>
-                                        <td><a href="#" th:text="${item.name}">Name ...</a></td>
-                                        <td th:text="${item.price}">Price ...</td>
-                                        <td th:text="${item.type}">Type ...</td>
-                                        <td th:text="${item.endPointIdentifier}">endPointIdentifier ...</td>
+                                        <td th:text="${item.itemName}">Name ...</td>
+                                        <td th:text="${item.itemType}">Type ...</td>
+                                        <td>
+                                            <a th:href="@{admin/view-item/{id}(id=${item.id})}">
+
+                                                <button class="btn btn-success">View</button>
+                                            </a>
+
+                                            <a th:href="@{admin/edit/{id}(id=${item.id})}">
+
+                                                <button class="btn btn-info">Edit</button>
+                                            </a>
+
+                                            <a th:href="@{admin/delete/{id}(id=${item.id})}">
+
+                                                <button class="btn btn-danger">Delete</button>
+                                            </a>
+
+
+                                        </td>
                                     </tr>
 
 
