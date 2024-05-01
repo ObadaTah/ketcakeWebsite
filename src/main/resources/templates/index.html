@@ -1,82 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{demo_1/layout.html}">
 
-<div th:replace="demo_1/header :: head"> </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KetCake Editor</title>
+</head>
 
 <body>
-    <div class="main-wrapper">
+    <section layout:fragment="content">
+        <a th:href="@{admin/add-item}">
+            <button class="btn btn-info m-3">Add New Item</button>
 
-        <div th:replace="demo_1/side-bar :: nav"> </div>
-        <div class="page-wrapper">
+        </a>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Items</h4>
+                <div class="table-responsive" style="width: 100%;">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Item Photo
+                                </th>
 
-            <div th:replace="demo_1/nav :: nav"> </div>
-            <div class="page-content">
-                <a th:href="@{admin/add-item}">
-                    <button class="btn btn-info">Add New Item</button>
+                                <th>
+                                    Item Name
+                                </th>
 
-                </a>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Items</h4>
-                        <div class="table-responsive" style="width: 100%;">
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>
-                                            Item Photo
-                                        </th>
+                                <th>
+                                    Item Type
+                                </th>
 
-                                        <th>
-                                            Item Name
-                                        </th>
+                                <th style="color: red; width:70%">
+                                    Operations
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="item : ${items}">
 
-                                        <th>
-                                            Item Type
-                                        </th>
+                                <td class="py-1">
 
-                                        <th style="color: red; width:70%">
-                                            Operations
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="item : ${items}">
+                                    <img width="100px" th:if="${item.image == null}"
+                                        src="http://via.placeholder.com/100x100" alt="image">
+                                    <img th:if="*{item.image != null}"
+                                        th:src="@{'data:image/jpeg;base64,'+${item.image}}" />
+                                </td>
+                                <td th:text="${item.itemName}">Name ...</td>
+                                <td th:text="${item.itemType}">Type ...</td>
+                                <td>
+                                    <a th:href="@{admin/view-item/{id}(id=${item.id})}">
 
-                                        <td class="py-1">
-                                            <img width="100px" src="http://via.placeholder.com/100x100" alt="image">
-                                        </td>
-                                        <td th:text="${item.itemName}">Name ...</td>
-                                        <td th:text="${item.itemType}">Type ...</td>
-                                        <td>
-                                            <a th:href="@{admin/view-item/{id}(id=${item.id})}">
+                                        <button class="btn btn-success">View</button>
+                                    </a>
 
-                                                <button class="btn btn-success">View</button>
-                                            </a>
+                                    <a th:href="@{admin/edit/{id}(id=${item.id})}">
 
-                                            <a th:href="@{admin/edit/{id}(id=${item.id})}">
+                                        <button class="btn btn-info">Edit</button>
+                                    </a>
 
-                                                <button class="btn btn-info">Edit</button>
-                                            </a>
+                                    <a th:href="@{admin/delete/{id}(id=${item.id})}">
 
-                                            <a th:href="@{admin/delete/{id}(id=${item.id})}">
-
-                                                <button class="btn btn-danger">Delete</button>
-                                            </a>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </a>
 
 
-                                        </td>
-                                    </tr>
+                                </td>
+                            </tr>
 
 
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-            <div th:replace="demo_1/footer :: footer">&copy; 2016 The Static Templates</div>
         </div>
-    </div>
+    </section>
 </body>
 
 </html>
