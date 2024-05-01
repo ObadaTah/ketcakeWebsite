@@ -1,13 +1,20 @@
 package ps.ketcake.website.Controllers;
 
+import java.io.IOException;
+import java.util.Base64;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import ps.ketcake.website.Models.Item;
@@ -22,8 +29,9 @@ public class AdminContoller {
 
     @GetMapping("")
     public String index(Model model) {
+        List<Item> items = itemRepository.findAll();
 
-        model.addAttribute("items", itemRepository.findAll());
+        model.addAttribute("items", items);
         return "index";
     }
 
@@ -31,16 +39,22 @@ public class AdminContoller {
     public String viewOne(@PathVariable("id") long id, Model model) {
         Item item = itemRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid item Id:" + id));
-        model.addAttribute("items", item);
+        model.addAttribute("item", item);
         // make the view-item.html
-        return "index";
+        return "view-item";
     }
 
     @PostMapping("/add-item")
-    public String save_item(@ModelAttribute Item item, Model model) {
-        model.addAttribute("item", item);
+    public String save_item(@ModelAttribute Item item, Model model, @RequestParam("file") MultipartFile file)
+            throws IOException {
+        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        // file.getContentType();
+        item.setFileName(fileName);
+        item.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+
         itemRepository.save(item);
-        return "index";
+        model.addAttribute("item", item);
+        return "redirect:/admin";
     }
 
     @GetMapping("/add-item")
@@ -63,7 +77,7 @@ public class AdminContoller {
             BindingResult result, Model model) {
         if (result.hasErrors()) {
             item.setId(id);
-            return "edit-user";
+            return "redirect:/admin";
         }
 
         itemRepository.save(item);
@@ -77,4 +91,5 @@ public class AdminContoller {
         itemRepository.delete(item);
         return "redirect:/admin";
     }
+
 }
