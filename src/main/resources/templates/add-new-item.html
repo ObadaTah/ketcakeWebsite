@@ -1,87 +1,78 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{demo_1/layout.html}">
 
 <div th:replace="demo_1/header :: head"> </div>
 
 <body>
-    <div class="main-wrapper">
+    <section layout:fragment="content">
 
-        <div th:replace="demo_1/side-bar :: nav"> </div>
-        <div class="page-wrapper">
+        <div class="card">
+            <div class="card-body">
+                <h6 class="card-title">Add New Item</h6>
+                <form class="forms-sample" th:action="@{add-item}" th:object="${item}" method="post"
+                    enctype="multipart/form-data">
+                    <div class="form-group">
 
-            <div th:replace="demo_1/nav :: nav"> </div>
-            <div class="page-content">
-                <!-- Template start -->
-
-                <div class="card">
-                    <div class="card-body">
-                        <h6 class="card-title">Add New Item</h6>
-                        <form class="forms-sample" th:action="@{add-item}" th:object="${item}" method="post">
-                            <div class="form-group">
-
-                                <label for="end_point_identifier">End Point Identifier</label>
-                                <input th:field="*{endPointIdentifier}" type="text" class="form-control"
-                                    id="end_point_identifier" autocomplete="off" placeholder="dark-mousse">
-                                <span th:if="${#fields.hasErrors('endPointIdentifier')}"
-                                    th:errors="*{endPointIdentifier}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_name">Item Name</label>
-                                <input th:field="*{itemName}" type="text" class="form-control" id="item_name"
-                                    autocomplete="off" placeholder="دارك مووس">
-                                <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_description">Item Description</label>
-                                <input th:field="*{itemDescription}" type="textarea" class="form-control"
-                                    id="item_description"
-                                    placeholder="كيكة الدارك كرمل موس , مكون من طبقة من كعكة الشوكولاتة الالمانية , و طبقة كريمية من خليط موس الشوكولاطةالبلجيكية و حشوة الكرمل الخفيفة  , و طبقة من جيلي الكرمل اللذيذ من الاعلى ">
-                                <span th:if="${#fields.hasErrors('itemDescription')}"
-                                    th:errors="*{itemDescription}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_price">Item Price</label>
-                                <input th:field="*{itemPrice}" type="number" class="form-control" id="item_price"
-                                    autocomplete="off" placeholder="20">
-                                <span th:if="${#fields.hasErrors('itemPrice')}" th:errors="*{itemPrice}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_type">Item Type</label>
-                                <input th:field="*{itemType}" type="text" class="form-control" id="item_type"
-                                    autocomplete="off" placeholder="pcs">
-                                <span th:if="${#fields.hasErrors('itemType')}" th:errors="*{itemType}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_flavour">Item Flavour</label>
-                                <input th:field="*{itemFlavour}" type="text" class="form-control" id="item_flavour"
-                                    autocomplete="off" placeholder="chocolate">
-                                <span th:if="${#fields.hasErrors('itemFlavour')}" th:errors="*{itemFlavour}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_size">Item Size</label>
-                                <input th:field="*{itemSize}" type="number" class="form-control" id="item_size"
-                                    autocomplete="off" placeholder="1">
-                                <span th:if="${#fields.hasErrors('itemSize')}" th:errors="*{itemSize}"></span>
-                            </div>
-                            <div class="form-group">
-                                <label for="item_shape">Item Shape</label>
-                                <input th:field="*{itemShape}" type="text" class="form-control" id="item_shape"
-                                    autocomplete="off" placeholder="triangle">
-                                <span th:if="${#fields.hasErrors('itemShape')}" th:errors="*{itemShape}"></span>
-                            </div>
-
-
-                            <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button class="btn btn-light">Cancel</button>
-                        </form>
+                        <label for="end_point_identifier">End Point Identifier</label>
+                        <input th:field="*{endPointIdentifier}" type="text" class="form-control"
+                            id="end_point_identifier" placeholder="dark-mousse">
+                        <span th:if="${#fields.hasErrors('endPointIdentifier')}"
+                            th:errors="*{endPointIdentifier}"></span>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="item_name">Item Name</label>
+                        <input th:field="*{itemName}" type="text" class="form-control" id="item_name"
+                            placeholder="دارك مووس">
+                        <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_description">Item Description</label>
+                        <input th:field="*{itemDescription}" type="textarea" class="form-control" id="item_description"
+                            placeholder="كيكة الدارك كرمل موس , مكون من طبقة من كعكة الشوكولاتة الالمانية , و طبقة كريمية من خليط موس الشوكولاطةالبلجيكية و حشوة الكرمل الخفيفة  , و طبقة من جيلي الكرمل اللذيذ من الاعلى ">
+                        <span th:if="${#fields.hasErrors('itemDescription')}" th:errors="*{itemDescription}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_price">Item Price</label>
+                        <input th:field="*{itemPrice}" type="number" class="form-control" id="item_price"
+                            placeholder="20">
+                        <span th:if="${#fields.hasErrors('itemPrice')}" th:errors="*{itemPrice}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_type">Item Type</label>
+                        <input th:field="*{itemType}" type="text" class="form-control" id="item_type" placeholder="pcs">
+                        <span th:if="${#fields.hasErrors('itemType')}" th:errors="*{itemType}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_flavour">Item Flavour</label>
+                        <input th:field="*{itemFlavour}" type="text" class="form-control" id="item_flavour"
+                            placeholder="chocolate">
+                        <span th:if="${#fields.hasErrors('itemFlavour')}" th:errors="*{itemFlavour}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_size">Item Size</label>
+                        <input th:field="*{itemSize}" type="number" class="form-control" id="item_size" placeholder="1">
+                        <span th:if="${#fields.hasErrors('itemSize')}" th:errors="*{itemSize}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="item_shape">Item Shape</label>
+                        <input th:field="*{itemShape}" type="text" class="form-control" id="item_shape"
+                            placeholder="triangle">
+                        <span th:if="${#fields.hasErrors('itemShape')}" th:errors="*{itemShape}"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Item Photo</label>
+                        <input accept="image/*" name="file" type="file" class="form-control" id="file">
+                        <!-- <span th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span> -->
+                    </div>
 
-                <!-- Template End -->
+
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                </form>
             </div>
-            <div th:replace="demo_1/footer :: footer">&copy; 2016 The Static Templates</div>
         </div>
-    </div>
+
+    </section>
 </body>
 
 </html>
