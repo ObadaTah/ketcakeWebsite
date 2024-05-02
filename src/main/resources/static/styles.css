@@ -1,0 +1,27 @@
+#item-name-show {
+    font-size: 1.5rem;
+    direction: rtl;
+}
+#item-description-show {
+    /* font-size: 1.2rem; */
+    direction: rtl;
+}
+.card {
+    direction: rtl;
+    text-align: right;
+}
+.priceHolder {
+    position: absolute;
+    bottom: 210px;
+    right: 10px;
+
+    width: auto;
+    height: auto;
+
+    aspect-ratio: 1 / 1;
+    font-size: 2vw;
+    align-content: center;
+    background-color: #f8f9fa;
+    padding: 1em;
+    border-radius: 100%;
+}
