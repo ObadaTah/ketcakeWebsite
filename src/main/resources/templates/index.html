@@ -10,30 +10,36 @@
 <body>
     <section layout:fragment="content">
         <a th:href="@{admin/add-item}">
-            <button class="btn btn-info m-3">Add New Item</button>
+            <button class="btn btn-info m-3">اضافة منتج جديد</button>
 
         </a>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Items</h4>
+                <h4 class="card-title">المنتجات</h4>
                 <div class="table-responsive" style="width: 100%;">
                     <table class="table table-striped">
                         <thead>
                             <tr>
                                 <th>
-                                    Item Photo
+                                    صورة المنتج
                                 </th>
 
                                 <th>
-                                    Item Name
+                                    اسم المنتج
+                                </th>
+                                <th>
+                                    وصف المنتج
+                                </th>
+                                <th>
+                                    سعر المنتج
                                 </th>
 
                                 <th>
-                                    Item Type
+                                    نوع المنتج
                                 </th>
 
                                 <th style="color: red; width:70%">
-                                    Operations
+                                    العمليات
                                 </th>
                             </tr>
                         </thead>
@@ -47,22 +53,24 @@
                                     <img th:if="*{item.image != null}"
                                         th:src="@{'data:image/jpeg;base64,'+${item.image}}" />
                                 </td>
-                                <td th:text="${item.itemName}">Name ...</td>
-                                <td th:text="${item.itemType}">Type ...</td>
+                                <td th:text="${item.itemName}"></td>
+                                <td th:text="${item.itemDescription}"></td>
+                                <td th:text="${item.itemPrice} + ₪"></td>
+                                <td th:text="${item.itemType}"></td>
                                 <td>
-                                    <a th:href="@{admin/view-item/{id}(id=${item.id})}">
+                                    <!-- <a th:href="@{admin/view-item/{id}(id=${item.id})}">
 
-                                        <button class="btn btn-success">View</button>
-                                    </a>
+                                        <button class="btn btn-success">عرض</button>
+                                    </a> -->
 
                                     <a th:href="@{admin/edit/{id}(id=${item.id})}">
 
-                                        <button class="btn btn-info">Edit</button>
+                                        <button class="btn btn-info">تعديل</button>
                                     </a>
 
                                     <a th:href="@{admin/delete/{id}(id=${item.id})}">
 
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger">حذف</button>
                                     </a>
 
 

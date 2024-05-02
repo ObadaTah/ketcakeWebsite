@@ -5,13 +5,6 @@
 <!-- <div th:replace="~{demo_1/header::head(~{::head})}"> </div> -->
 
 <body>
-    <script type="text/javascript">
-        console.log("Edit Item Page");
-        function itemNameOnChange() {
-            var itemName = document.getElementById("itemName").value;
-            document.getElementById("card-title").innerHTML = itemName;
-        }
-    </script>
     <section layout:fragment="content">
         <div class="container">
             <div class="row">
@@ -20,91 +13,77 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">Add New Item</h6>
+                            <h6 class="card-title">اضافة منتج جديد</h6>
                             <form class="forms-sample" th:action="@{/admin/update/{id}(id=${item.id})}"
-                                th:object="${item}" method="post">
+                                th:object="${item}" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
 
-                                    <label for="endPointIdentifier">End Point Identifier</label>
+                                    <label for="endPointIdentifier">معرف المنتج</label>
                                     <input th:field="*{endPointIdentifier}" type="text" class="form-control"
                                         id="endPointIdentifier" autocomplete="off" placeholder="dark-mousse">
                                     <span th:if="${#fields.hasErrors('endPointIdentifier')}"
                                         th:errors="*{endPointIdentifier}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="itemName">Item Name</label>
-                                    <input th:onchange="itemNameOnChange()" th:field="*{itemName}" type="text"
-                                        class="form-control" id="itemName" autocomplete="off" placeholder="دارك مووس">
+                                    <label for="itemName">اسم المنتج</label>
+                                    <input th:field="*{itemName}" type="text" class="form-control" id="itemName"
+                                        autocomplete="off" placeholder="دارك مووس">
                                     <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="itemDescription">Item Description</label>
-                                    <input th:field="*{itemDescription}" type="textarea" class="form-control"
+                                    <label for="itemDescription">تفاصيل المنتج</label>
+                                    <input th:field="*{itemDescription}" type="text" class="form-control"
                                         id="itemDescription"
                                         placeholder="كيكة الدارك كرمل موس , مكون من طبقة من كعكة الشوكولاتة الالمانية , و طبقة كريمية من خليط موس الشوكولاطةالبلجيكية و حشوة الكرمل الخفيفة  , و طبقة من جيلي الكرمل اللذيذ من الاعلى ">
                                     <span th:if="${#fields.hasErrors('itemDescription')}"
                                         th:errors="*{itemDescription}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="itemPrice">Item Price</label>
+                                    <label for="itemPrice">سعر المنتج</label>
                                     <input th:field="*{itemPrice}" type="number" class="form-control" id="itemPrice"
                                         autocomplete="off" placeholder="20">
                                     <span th:if="${#fields.hasErrors('itemPrice')}" th:errors="*{itemPrice}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="itemType">Item Type</label>
+                                    <label for="itemType">نوع المنتج</label>
                                     <input th:field="*{itemType}" type="text" class="form-control" id="itemType"
                                         autocomplete="off" placeholder="pcs">
                                     <span th:if="${#fields.hasErrors('itemType')}" th:errors="*{itemType}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="itemFlavour">Item Flavour</label>
+                                    <label for="itemFlavour">طعم المنتج</label>
                                     <input th:field="*{itemFlavour}" type="text" class="form-control" id="itemFlavour"
                                         autocomplete="off" placeholder="chocolate">
                                     <span th:if="${#fields.hasErrors('itemFlavour')}" th:errors="*{itemFlavour}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="itemSize">Item Size</label>
+                                    <label for="itemSize">حجم المنتج</label>
                                     <input th:field="*{itemSize}" type="number" class="form-control" id="itemSize"
                                         autocomplete="off" placeholder="1">
                                     <span th:if="${#fields.hasErrors('itemSize')}" th:errors="*{itemSize}"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label for="itemShape">Item Shape</label>
+                                    <label for="itemShape">شكل المنتج</label>
                                     <input th:field="*{itemShape}" type="text" class="form-control" id="itemShape"
                                         autocomplete="off" placeholder="triangle">
                                     <span th:if="${#fields.hasErrors('itemShape')}" th:errors="*{itemShape}"></span>
                                 </div>
 
-
-                                <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                <button class="btn btn-light">Cancel</button>
+                                <div class="form-group">
+                                    <label for="file">Item Photo</label>
+                                    <input accept="image/*" name="file" type="file" class="form-control" id="file">
+                                    <!-- <span th:if="${#fields.hasErrors('file')}" th:errors="*{file}"></span> -->
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2">حفظ</button>
+                                <button class="btn btn-light">الغاء</button>
                             </form>
                         </div>
                     </div>
 
                 </div>
                 <div class="col-6">
-                    <div class="card" style="border-radius: 20px">
+                    <div th:replace="/demo_1/view-item-card :: div"> </div>
 
-
-                        <img src="http://via.placeholder.com/1024x1024" alt="image">
-
-
-                        <div class="card-body">
-                            <div class="card-header">
-                                <h3 class="card-title" id="item-name-show"></h3>
-                            </div>
-                            <div class="card-body">
-                                <p class="card-text" id="item-description-show"></p>
-                            </div>
-                            <div class="card-footer">
-                                <p class="card-text"></p>
-                                <p class="card-text"></p>
-                                <p class="card-text"></p>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -117,3 +96,4 @@
 
 
 </html>
+<script src="/edit-page.js"> </script>
