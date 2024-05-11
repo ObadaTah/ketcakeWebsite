@@ -19,7 +19,10 @@ public class CustomersController {
     @GetMapping("/{itemEndPointIdentifier}")
     public String oneItem(Model model, @PathVariable String itemEndPointIdentifier) {
         // Add error handling here
-        model.addAttribute("item", itemRepository.findByEndPointIdentifier(itemEndPointIdentifier).orElseThrow(null));
+        System.out.println("itemEndPointIdentifier");
+        System.out.println(itemEndPointIdentifier);
+        model.addAttribute("item", itemRepository.findByEndPointIdentifier(itemEndPointIdentifier)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid item identifier")));
         return "customers/item";
     }
 }
