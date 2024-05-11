@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="/assets/vendors/core/core.css">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/assets/fonts/feather-font/css/iconfont.css">
+    <link rel="stylesheet" href="/assets/css/demo_1/style.css">
+    <link rel="stylesheet" href="/styles.css">
+
+    <link rel="shortcut icon" href="/assets/images/favicon.png" />
+    <title>KetCake</title>
+</head>
+
+
+
+<body>
+    <div class=" main-wrapper">
+
+
+        <div class="page-wrapper container">
+            <div class="row">
+                <div class="col">
+
+                    <!-- <div></div> -->
+                    <div class="page-content">
+                        <section layout:fragment="content">
+
+                        </section>
+                    </div>
+                </div>
+
+            </div>
+
+            <div th:replace="/demo_1/footer :: footer"> </div>
+        </div>
+    </div>
+</body>
+
+</html>
