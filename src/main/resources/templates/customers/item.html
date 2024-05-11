@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{demo_1/layoutCustomers.html}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KetCake Editor</title>
+</head>
+
+<body>
+    <section layout:fragment="content">
+        <div class="container">
+            <img src="/assets/images/logo.png" width="100%">
+            <input hidden th:field="*{item.itemPrice}" type="number" class="form-control" id="itemPrice"
+                autocomplete="off" placeholder="20">
+            <input hidden th:field="*{item.itemDescription}" type="text" class="form-control" id="itemDescription"
+                placeholder="كيكة الدارك كرمل موس , مكون من طبقة من كعكة الشوكولاتة الالمانية , و طبقة كريمية من خليط موس الشوكولاطةالبلجيكية و حشوة الكرمل الخفيفة  , و طبقة من جيلي الكرمل اللذيذ من الاعلى ">
+            <input hidden th:field="*{item.itemName}" type="text" class="form-control" id="itemName" autocomplete="off"
+                placeholder="دارك مووس">
+            <input hidden th:field="*{item.itemName}" type="text" class="form-control" id="itemName" autocomplete="off"
+                placeholder="دارك مووس">
+
+
+            <div th:replace="/demo_1/view-item-card :: div"> </div>
+        </div>
+    </section>
+</body>
+
+</html>
+<script src="/edit-page.js"> </script>
