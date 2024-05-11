@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" dir="rtl">
 
 <head>
@@ -19,20 +21,22 @@
 
 
 <body>
-    <div class="main-wrapper">
+    <div sec:authorize="isAuthenticated()">
+        <div class=" main-wrapper">
 
 
-        <div th:replace="/demo_1/nav :: nav"> </div>
-        <div class="page-wrapper">
+            <div th:replace="/demo_1/nav :: nav"> </div>
+            <div class="page-wrapper">
 
-            <div th:replace="/demo_1/side-bar :: nav"> </div>
-            <div class="page-content">
-                <section layout:fragment="content">
+                <div th:replace="/demo_1/side-bar :: nav"> </div>
+                <div class="page-content">
+                    <section layout:fragment="content">
 
-                </section>
+                    </section>
+
+                </div>
 
             </div>
-
             <div th:replace="/demo_1/footer :: footer"> </div>
         </div>
     </div>
