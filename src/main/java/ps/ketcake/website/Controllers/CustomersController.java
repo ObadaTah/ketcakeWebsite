@@ -11,12 +11,11 @@ import ps.ketcake.website.Repositories.ItemRepository;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/items")
 public class CustomersController {
 
     private final ItemRepository itemRepository;
 
-    @GetMapping("/{itemEndPointIdentifier}")
+    @GetMapping("/items/{itemEndPointIdentifier}")
     public String oneItem(Model model, @PathVariable String itemEndPointIdentifier) {
         // Add error handling here
         System.out.println("itemEndPointIdentifier");
@@ -24,5 +23,10 @@ public class CustomersController {
         model.addAttribute("item", itemRepository.findByEndPointIdentifier(itemEndPointIdentifier)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid item identifier")));
         return "customers/item";
+    }
+
+    @GetMapping("/menu")
+    public String menu() {
+        return "customers/menu";
     }
 }
