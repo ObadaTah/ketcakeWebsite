@@ -48,9 +48,9 @@
 
                                 <td class="py-1">
 
-                                    <img width="100px" th:if="${item.image == null}"
+                                    <img width="100px" th:if="${item.image == null || item.image == ''}"
                                         src="http://via.placeholder.com/100x100" alt="image">
-                                    <img th:if="*{item.image != null}"
+                                    <img th:if="*{item.image != null && item.image != '' }"
                                         th:src="@{'data:image/jpeg;base64,'+${item.image}}" />
                                 </td>
                                 <td th:text="${item.itemName}"></td>

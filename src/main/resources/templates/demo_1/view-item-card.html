@@ -2,8 +2,10 @@
 
 
 
-    <img width="1000px" th:if="${item.image == null}" src="http://via.placeholder.com/1000x1000" alt="image">
-    <img th:if="*{item.image != null}" th:src="@{'data:image/jpeg;base64,'+${item.image}}" />
+    <img id="imageShow" th:if="${item.image == null || item.image == ''}" src="http://via.placeholder.com/1000x1000"
+        alt="image">
+    <img id="imageShow" th:if="*{item.image != null && item.image != '' }"
+        th:src="@{'data:image/jpeg;base64,'+${item.image}}" />
     <div class="priceHolder">
         <span id="item-price-show"></span>₪
     </div>
