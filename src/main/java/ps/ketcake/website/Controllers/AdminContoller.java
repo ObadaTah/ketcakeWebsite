@@ -81,7 +81,7 @@ public class AdminContoller {
         }
         Item oldItem = itemRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid item Id:" + id));
-        if (file == null) {
+        if (file == null && oldItem.getImage() != null) {
             item.setImage(oldItem.getImage());
         } else {
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
