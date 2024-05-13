@@ -31,7 +31,7 @@ public class CustomersController {
     }
 
     @GetMapping("")
-    public String index() {
-        return "";
+    public String underConstruction() {
+        return "underConstruction";
     }
 }

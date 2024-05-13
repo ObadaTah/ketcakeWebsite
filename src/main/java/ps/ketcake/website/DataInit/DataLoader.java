@@ -27,7 +27,7 @@ public class DataLoader implements CommandLineRunner {
 
     public void generateItems() {
         ArrayList<Item> items = new ArrayList<Item>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 0; i++) {
             Item item = Item.builder().endPointIdentifier(RandomDataGenerator.generateRandomWords())
                     .itemName(RandomDataGenerator.generateRandomWords())
                     .itemDescription(RandomDataGenerator.generateRandomWords())
