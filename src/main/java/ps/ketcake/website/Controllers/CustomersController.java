@@ -29,4 +29,9 @@ public class CustomersController {
     public String menu() {
         return "customers/menu";
     }
+
+    @GetMapping("")
+    public String index() {
+        return "";
+    }
 }
