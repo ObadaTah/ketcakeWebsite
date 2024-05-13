@@ -16,4 +16,5 @@ public class Config {
         templateResolver.setTemplateMode(TemplateMode.HTML);
         return templateResolver;
     }
+
 }
