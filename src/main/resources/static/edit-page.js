@@ -3,12 +3,15 @@ window.onload = function () {
     console.log("initPreviewCard");
     let itemName = document.getElementById("itemName");
     let itemDescription = document.getElementById("itemDescription");
+    console.log(itemDescription);
     let itemPrice = document.getElementById("itemPrice");
     let cardNameShow = document.getElementById("item-name-show");
     let cardDescriptionShow = document.getElementById("item-description-show");
+    console.log(cardDescriptionShow);
     let cardPriceShow = document.getElementById("item-price-show");
     cardNameShow.innerHTML = itemName.value;
     cardDescriptionShow.innerHTML = itemDescription.value;
+    console.log(itemDescription.value);
     cardPriceShow.innerHTML = itemPrice.value;
 };
 
