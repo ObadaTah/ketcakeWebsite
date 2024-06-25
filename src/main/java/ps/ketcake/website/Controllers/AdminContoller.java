@@ -52,7 +52,9 @@ public class AdminContoller {
         item.setFileName(fileName);
         item.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
 
+        System.out.println("here" + item.getItemDescription());
         itemRepository.save(item);
+
         model.addAttribute("item", item);
         return "redirect:/admin";
     }
@@ -79,16 +81,35 @@ public class AdminContoller {
             item.setId(id);
             return "redirect:/admin";
         }
+        // Item newItem = new Item();
+        // newItem.setId(id);
+        // newItem.setEndPointIdentifier(item.getEndPointIdentifier());
+        // newItem.setItemName(item.getItemName());
+        // newItem.setItemDescription(item.getItemDescription());
+        // newItem.setItemPrice(item.getItemPrice());
+        // newItem.setItemType(item.getItemType());
+        // newItem.setItemFlavour(item.getItemFlavour());
+        // newItem.setItemSize(item.getItemSize());
+        // newItem.setItemShape(item.getItemShape());
+        // if (file != null && !file.isEmpty()) {
+        // String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        // // file.getContentType();
+        // newItem.setFileName(fileName);
+        // newItem.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
+        // }
         Item oldItem = itemRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid item Id:" + id));
-        if (file == null && oldItem.getImage() != null) {
+
+        if (file == null || file.isEmpty()) {
             item.setImage(oldItem.getImage());
+            item.setFileName(oldItem.getFileName());
         } else {
             String fileName = StringUtils.cleanPath(file.getOriginalFilename());
             // file.getContentType();
             item.setFileName(fileName);
             item.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
         }
+
         itemRepository.save(item);
         return "redirect:/admin";
     }
