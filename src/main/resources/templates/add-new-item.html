@@ -24,18 +24,18 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="itemName">Item Name</label>
-                                    <input th:field="*{itemName}" type="text" class="form-control " id="itemName"
+                                    <input th:field="*{itemName}" type="text" class="form-control" id="itemName"
                                         placeholder="دارك مووس">
                                     <span th:if="${#fields.hasErrors('itemName')}" th:errors="*{itemName}"></span>
                                 </div>
                                 <div class="form-group">
                                     <label for="itemDescription">Item Description</label>
-                                    <input th:field="*{itemDescription}" type="textarea" class="form-control"
-                                        id="itemDescription"
-                                        placeholder="كيكة الدارك كرمل موس , مكون من طبقة من كعكة الشوكولاتة الالمانية , و طبقة كريمية من خليط موس الشوكولاطةالبلجيكية و حشوة الكرمل الخفيفة  , و طبقة من جيلي الكرمل اللذيذ من الاعلى ">
+                                    <input th:field="*{itemDescription}" type="text" class="form-control"
+                                        id="itemDescription" placeholder="دارك مووس">
                                     <span th:if="${#fields.hasErrors('itemDescription')}"
                                         th:errors="*{itemDescription}"></span>
                                 </div>
+
                                 <div class="form-group">
                                     <label for="itemPrice">Item Price</label>
                                     <input th:field="*{itemPrice}" type="number" class="form-control" id="itemPrice"
@@ -74,7 +74,6 @@
 
 
                                 <button type="submit" class="btn btn-primary mr-2">Submit</button>
-                                <button class="btn btn-light">Cancel</button>
                             </form>
                         </div>
                     </div>
