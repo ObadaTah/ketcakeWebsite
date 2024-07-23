@@ -30,6 +30,7 @@ public class AuthConfig {
                         .requestMatchers("/styles.css").permitAll()
                         .requestMatchers("/items/**").permitAll()
                         .requestMatchers("/edit-page.js").permitAll()
+                        .requestMatchers("/menu").permitAll()
                         .anyRequest().authenticated()
                 // .requestMatchers(HttpMethod.POST, "/admin/**").hasRole("ADMIN")
                 )
